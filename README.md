@@ -1,4 +1,4 @@
-This is what I learned about WKWebView: Apple's new WebKit API debut on iOS 8.
+This is what I learned about WKWebView: Apple's new WebKit API debuted on iOS 8.
 As of this writing, latest iOS version is iOS 8.1.0.
 
 ## file:/// don't work without tmp directory
