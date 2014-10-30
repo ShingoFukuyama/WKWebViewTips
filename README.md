@@ -146,6 +146,9 @@ Are cookies synched between NSHTTPCookie and WKWebView at some point?
 ## WKWebView's backForwardList is readonly
 I want WKWebView to restore its pageing history.
 
+## Cannot coexist with UIWebView
+If you try to submit an app using UIWebView and WKWebView, the submission would be failed. In other words, you have to stop supporting iOS 7 and before iOS versions to use WKWebView.
+
 ## IMO
 As you can see, WKWebView still hard to use and UIWebView looks easy.
 However, Apple announced to developers 'Starting February 1, 2015, new iOS apps uploaded to the App Store must include 64-bit support and be built with the iOS 8 SDK, included in Xcode 6 or later'. It is possible Apple make UIWebView deprecated.
