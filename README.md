@@ -1,8 +1,8 @@
 This is what I learned about WKWebView: Apple's new WebKit API debuted on iOS 8.
-As of this writing, latest iOS version is iOS 8.1.0.
+As of this writing, latest iOS version is iOS 8.1.3.
 
 ## file:/// don't work without tmp directory
-Only tmp directory access with file protocol has been allowed from iOS 8.0.2.
+Only the tmp directory access with file protocol has been allowed from iOS 8.0.2.
 You can see what directory access allowed with [GitHub shazron / WKWebViewFIleUrlTest](https://github.com/shazron/WKWebViewFIleUrlTest)
 
 ## Can't handle in Storyboard and Interface Builder
@@ -142,6 +142,9 @@ Some websites somehow override JavaScript's `window.webkit`. To prevent this iss
 ## Cookie saving sometimes failed
 Are cookies synched between NSHTTPCookie and WKWebView at some point?
 
+Thanks to @winzig, he gives me information: "Cookie discussion / ajax #3"
+Stackoverflow: [Can I set the cookies to be used by a WKWebView?](http://stackoverflow.com/questions/26573137/can-i-set-the-cookies-to-be-used-by-a-wkwebview)
+At WKWebView initialization time, it could set cookies to both cookie management areas without waiting the areas to be synched.
 
 ## WKWebView's backForwardList is readonly
 I want WKWebView to restore its pageing history.
