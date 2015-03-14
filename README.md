@@ -165,10 +165,11 @@ At `WKWebView` initialization time, it can set cookies to both cookie management
 ## `WKWebView`'s `backForwardList` is readonly
 I want `WKWebView` to restore its paging history.
 
-## Cannot coexist with `UIWebView` on iOS 7 and below
-If you try to submit an app for iOS 7/8 using `UIWebView` and `WKWebView`, the submission will be rejected.
+## Hard to coexist with `UIWebView` on iOS 7 and below
+Before some person tried to submit thier app for both iOS 7 and iOS 8 using `UIWebView` and `WKWebView`, the submission was rejected right at the time.
 
-In other words, you have to stop supporting iOS 7 and below iOS versions to use `WKWebView`.
+See this issue [Cannot coexist with UIWebView on iOS 7 and below](https://github.com/ShingoFukuyama/WKWebViewTips/issues/2)
+
 
 ## Conclusion
 As you can see, `WKWebView` still looks hard to use and UIWebView looks easy.
