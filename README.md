@@ -170,6 +170,9 @@ Before some person tried to submit thier app for both iOS 7 and iOS 8 using `UIW
 
 See this issue [Cannot coexist with UIWebView on iOS 7 and below](https://github.com/ShingoFukuyama/WKWebViewTips/issues/2)
 
+## Links
+[Naituw/WBWebViewConsole](https://github.com/Naituw/WBWebViewConsole)
+"WBWebViewConsole is an In-App debug console for your UIWebView && WKWebView"
 
 ## Conclusion
 As you can see, `WKWebView` still looks hard to use and UIWebView looks easy.
