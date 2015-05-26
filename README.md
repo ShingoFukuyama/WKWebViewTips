@@ -142,6 +142,8 @@ After much trial and error, I've reached the following conclusion:
 
 CSS: `-webkit-touch-callout: none;` and JavaScript: `document.documentElement.style.webkitTouchCallout='none';` won't work.
 
+Note: This bug was fixed in iOS 8.2.
+
 ## Sometimes capturing `WKWebView` fails
 
 Sometimes capturing a screenshot of `WKWebView` itself failed, try to capture `WKWebView`'s `scrollView` property instead.
