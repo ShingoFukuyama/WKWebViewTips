@@ -7,6 +7,9 @@ Only the `tmp` directory access can be accessed with the `file:` scheme, as of i
 
 You can see what directory access is allowed on [the shazron / WKWebViewFIleUrlTest GitHut repo](https://github.com/shazron/WKWebViewFIleUrlTest).
 
+Note: On iOS 9.0.0 (beta), you can use the below method to load files from Documents, Library and tmp folders. But App Bundle cannot.
+`- (nullable WKNavigation *)loadFileURL:(NSURL *)URL allowingReadAccessToURL:(NSURL *)readAccessURL NS_AVAILABLE(10_11, 9_0);`
+
 ## Can't handle in Storyboard and Interface Builder
 You need to set `WKWebView` and any `NSLayoutConstraint`s programmatically.
 
