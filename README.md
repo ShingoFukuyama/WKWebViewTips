@@ -101,7 +101,12 @@ If you want to present an authentication challenge to user, you have to implemen
             [self presentViewController:alertController animated:YES completion:^{}];
         });
         
-    } else {
+    }
+    else if ([authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        // without this handling, it crashes on iOS 9
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
+    else {
         completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
     }
 }
