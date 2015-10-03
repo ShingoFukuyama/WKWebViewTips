@@ -103,7 +103,7 @@ If you want to present an authentication challenge to user, you have to implemen
         
     }
     else if ([authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        // without this handling, it crashes on iOS 9
+        // needs this handling on iOS 9
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
         // or, see also http://qiita.com/niwatako/items/9ae602cb173625b4530a#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89
     }
