@@ -186,6 +186,8 @@ Note: This bug was fixed in iOS 8.2.
 
 Sometimes capturing a screenshot of `WKWebView` itself failed, try to capture `WKWebView`'s `scrollView` property instead.
 
+Otherwise, if you are not afraid of using private API, try [lemonmojo/WKWebView-Screenshot](https://github.com/lemonmojo/WKWebView-Screenshot).
+
 ## Xcode 6.1 doesn't indicate precise memory usage for WKWebView
 
 As of Xcode 6.1, it indicates lower memory usage than is actually used.
