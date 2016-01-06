@@ -134,10 +134,10 @@ WKWebView *webView2 = [[WKWebView alloc] initWithFrame:CGRectZero configuration:
 
 See [this Stack Overflow question](http://stackoverflow.com/questions/25797972/cookie-sharing-between-multiple-wkwebviews).
 
-## `NSCachedURLResponse` won't work
-`UIWebView` can filter ad URLs and cache to read websites offline using `NSURLCache` and `NSCachedURLResponse`.
+## Cannot work with `NSURLProtocol`, `NSCachedURLResponse`, `NSURLProtocol`
+`UIWebView` can filter ad URLs and cache to read websites offline using `NSURLProtocol`, `NSURLCache`, and `NSCachedURLResponse`.
 
-But `WKWebView` can't.
+But `WKWebView` cannot work with those APIs.
 
 ## Cookie, Cache, Credential, WebKit data cannot easily delete
 After much trial and error, I've reached the following conclusion:
