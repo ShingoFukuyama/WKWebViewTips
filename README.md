@@ -140,12 +140,41 @@ See [this Stack Overflow question](http://stackoverflow.com/questions/25797972/c
 But `WKWebView` cannot work with those APIs.
 
 ## Cookie, Cache, Credential, WebKit data cannot easily delete
+### iOS 8
 After much trial and error, I've reached the following conclusion:
 
 1. Use `NSURLCache` and `NSHTTPCookie` to delete cookies and caches in the same way as you used to do on `UIWebView`.
 2. If you use `WKProccessPool`, re-initialize it.
 3. Delete `Cookies`, `Caches`, `WebKit` subdirectories in the `Library` directory.
 4. Delete all `WKWebView`s
+
+### iOS 9
+
+```objc
+//// Optional data
+NSSet *websiteDataTypes
+= [NSSet setWithArray:@[
+                        WKWebsiteDataTypeDiskCache,
+                        WKWebsiteDataTypeOfflineWebApplicationCache,
+                        WKWebsiteDataTypeMemoryCache,
+                        WKWebsiteDataTypeLocalStorage,
+                        WKWebsiteDataTypeCookies,
+                        WKWebsiteDataTypeSessionStorage,
+                        WKWebsiteDataTypeIndexedDBDatabases,
+                        WKWebsiteDataTypeWebSQLDatabases
+                        ]];
+//// All kinds of data
+//NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
+//// Date from
+NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+//// Execute
+[[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+   // Done
+}];
+```
+
+Stack Overflow [How to remove cache in WKWebview?](http://stackoverflow.com/a/32491271/3283039)
+
 
 ## Cannot disable long press link menu
 
