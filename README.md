@@ -16,6 +16,7 @@ You need to set `WKWebView` and any `NSLayoutConstraint`s programmatically.
 ## HTML `<a>` tag with `target="_blank"` won't respond
 See Stack Overflow: [Why is WKWebView not opening links with target=“_blank”](http://stackoverflow.com/questions/25713069/why-is-wkwebview-not-opening-links-with-target-blank)
 
+
 ## URL Scheme and App Store links won't work
 
 #### Example
@@ -45,6 +46,7 @@ See Stack Overflow: [Why is WKWebView not opening links with target=“_blank”
 }
 ```
 
+
 ## alert, confirm, prompt from JavaScript needs to set `WKUIDelegate` methods
 
 If you want to show dialog boxes, you have to implement the following methods:
@@ -54,6 +56,7 @@ If you want to show dialog boxes, you have to implement the following methods:
 `webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:completionHandler:`
 
 [Here is how to set those](http://qiita.com/ShingoFukuyama/items/5d97e6c62e3813d1ae98). 
+
 
 ## Basic/Digest/etc authentication input dialog boxes need to set a `WKNavigationDelegate` method
 
@@ -113,6 +116,7 @@ If you want to present an authentication challenge to user, you have to implemen
 }
 ```
 
+
 ## Cookie sharing between multiple `WKWebView`s
 
 Use a `WKProcessPool` to share cookies between web views.
@@ -134,12 +138,15 @@ WKWebView *webView2 = [[WKWebView alloc] initWithFrame:CGRectZero configuration:
 
 See [this Stack Overflow question](http://stackoverflow.com/questions/25797972/cookie-sharing-between-multiple-wkwebviews).
 
+
 ## Cannot work with `NSURLProtocol`, `NSCachedURLResponse`, `NSURLProtocol`
 `UIWebView` can filter ad URLs and cache to read websites offline using `NSURLProtocol`, `NSURLCache`, and `NSCachedURLResponse`.
 
 But `WKWebView` cannot work with those APIs.
 
+
 ## Cookie, Cache, Credential, WebKit data cannot easily delete
+
 ### iOS 8
 After much trial and error, I've reached the following conclusion:
 
@@ -176,6 +183,24 @@ NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
 Stack Overflow [How to remove cache in WKWebview?](http://stackoverflow.com/a/32491271/3283039)
 
 
+## Scroll rate bug on iOS 9
+
+On iOS 8, the below code works fine, it can scroll with more inertia.
+
+`webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;`
+
+As for iOS 9, this code is meaningless, without setting the rate value within UIScrollView delegate `scrollViewWillBeginDragging`.
+
+```objc
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+}
+```
+
+See Stack Overflow: [Cannot change WKWebView's scroll rate on iOS 9](http://stackoverflow.com/questions/31369538/cannot-change-wkwebviews-scroll-rate-on-ios-9-beta)
+
+
 ## Cannot disable long press link menu
 
 CSS: `-webkit-touch-callout: none;` and JavaScript: `document.documentElement.style.webkitTouchCallout='none';` won't work.
@@ -188,12 +213,15 @@ Sometimes capturing a screenshot of `WKWebView` itself failed, try to capture `W
 
 Otherwise, if you are not afraid of using private API, try [lemonmojo/WKWebView-Screenshot](https://github.com/lemonmojo/WKWebView-Screenshot).
 
-## Xcode 6.1 doesn't indicate precise memory usage for WKWebView
+
+## Xcode 6.1 and above doesn't indicate precise memory usage for WKWebView
 
 As of Xcode 6.1, it indicates lower memory usage than is actually used.
 
+
 ## `window.webkit.messageHandlers` won't work on some websites
 Some websites somehow override JavaScript's `window.webkit`. To prevent this issue, you should cache this to a variable before a website's content starts loading. `WKUserScriptInjectionTimeAtDocumentStart` can help you.
+
 
 ## Cookie saving sometimes failed
 Are cookies synced between `NSHTTPCookie` and `WKWebView` at some point?
@@ -204,6 +232,7 @@ See this Stack Overflow question: [Can I set the cookies to be used by a WKWebVi
 
 At `WKWebView` initialization time, it can set cookies to both cookie management areas without waiting for the areas to be synced.
 
+
 ## `WKWebView`'s `backForwardList` is readonly
 I want `WKWebView` to restore its paging history.
 
@@ -212,9 +241,11 @@ Before some person tried to submit thier app for both iOS 7 and iOS 8 using `UIW
 
 See this issue [Cannot coexist with UIWebView on iOS 7 and below](https://github.com/ShingoFukuyama/WKWebViewTips/issues/2)
 
+
 ## Links
 [Naituw/WBWebViewConsole](https://github.com/Naituw/WBWebViewConsole)
 "WBWebViewConsole is an In-App debug console for your UIWebView && WKWebView"
+
 
 ## Conclusion
 As you can see, `WKWebView` still looks hard to use and UIWebView looks easy.
